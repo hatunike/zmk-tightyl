@@ -15,35 +15,38 @@
         /*
          * BASE
          *
-         * LEFT                         RIGHT
-         * TAB Q W E R T                '    ; K   L   J   H
-         * ESC A S D F G                \    / ,   .   M   N
-         * SHF Z X C V B                BSPC P I   O   U   Y
-         *     MEH GUI ALT CTL ENT      SPC  ] SYM [   NUM
+         * TAB Q W E R T              Y U I O P BSPC
+         * ESC A S D F G              H J K L ; '
+         * SHF Z X C V B              N M , . / \
+         *     MEH GUI ALT CTL ENT    SPC NUM SYM [ ]
          */
         base_layer {
             bindings = <
+                /* LEFT */
                 &kp TAB          &kp Q       &kp W       &kp E       &kp R       &kp T
                 &lt NAV ESC      &kp A       &kp S       &kp D       &kp F       &kp G
                 &kp LSHIFT       &kp Z       &kp X       &kp C       &kp V       &kp B
                                  &mt LC(LA(LSHIFT)) ESC
                                                &kp LGUI    &kp LALT    &kp LCTRL   &kp ENTER
 
-                &kp SQT          &kp SEMI    &kp K       &kp L       &kp J       &kp H
-                &kp BSLH         &kp FSLH    &kp COMMA   &kp DOT     &kp M       &kp N
-                &kp BSPC         &kp P       &kp I       &kp O       &kp U       &kp Y
-                &kp SPACE        &kp RBKT    &lt SYM RIGHT
-                                                           &kp LBKT    &lt NUM LEFT
+                /* RIGHT */
+                &kp Y            &kp U       &kp I       &kp O       &kp P       &kp BSPC
+                &kp H            &kp J       &kp K       &kp L       &kp SEMI    &kp SQT
+                &kp N            &kp M       &kp COMMA   &kp DOT     &kp FSLH    &kp BSLH
+                &kp SPACE        &lt NUM LEFT
+                                               &lt SYM RIGHT
+                                                           &kp LBKT    &kp RBKT
             >;
         };
 
         /*
          * NAV / EDITING
          *
-         * Right-hand C2/C3 swapped exactly as on BASE.
+         * Now expressed in physical key order.
          */
         nav_layer {
             bindings = <
+                /* LEFT */
                 &kp TAB          &kp HOME    &kp HOME    &kp HOME    &kp HOME    &kp HOME
                 &trans           &kp ESC     &kp BSPC    &sk LC(LSHIFT)
                                                            &kp LSHIFT &sk LC(LA(LS(LGUI)))
@@ -51,13 +54,14 @@
                                  &mt LC(LA(LSHIFT)) ESC
                                                &kp LGUI    &kp LALT    &kp LCTRL   &kp ENTER
 
-                &kp ENTER        &kp BSPC    &kp UP      &kp RIGHT   &kp DOWN    &kp LEFT
-                &kp DEL          &kp FSLH    &msc SCRL_DOWN
-                                                           &msc SCRL_RIGHT
+                /* RIGHT */
+                &kp BSPC         &kp END     &kp END     &kp END     &kp END     &kp END
+                &kp ENTER        &kp BSPC    &kp RIGHT   &kp UP      &kp DOWN    &kp LEFT
+                &kp DEL          &kp FSLH    &msc SCRL_RIGHT
+                                                           &msc SCRL_DOWN
                                                                        &msc SCRL_UP
                                                                                    &msc SCRL_LEFT
-                &kp BSPC         &kp END     &kp END     &kp END     &kp END     &kp END
-                &kp SPACE        &mkp MB2    &kp DEL     &mkp MB1    &kp BSPC
+                &kp SPACE        &kp BSPC    &kp DEL     &mkp MB1    &mkp MB2
             >;
         };
 
@@ -66,15 +70,17 @@
          */
         num_layer {
             bindings = <
+                /* LEFT */
                 &kp GRAVE        &kp N1      &kp N2      &kp N3      &kp N4      &kp N5
                 &kp ESC          &kp N1      &kp N2      &kp N3      &kp N4      &kp N5
                 &kp LSHIFT       &kp N1      &kp N2      &kp N3      &kp N4      &kp N5
                                  &trans       &trans       &trans       &trans       &trans
 
-                &kp ENTER        &kp N0      &kp N8      &kp N9      &kp N7      &kp N6
-                &kp DEL          &kp N0      &kp N8      &kp N9      &kp N7      &kp N6
-                &kp BSPC         &kp EQUAL   &kp N8      &kp MINUS   &kp N7      &kp N6
-                &trans           &kp RBKT    &trans      &kp LBKT    &trans
+                /* RIGHT */
+                &kp BSPC         &kp EQUAL   &kp MINUS   &kp N8      &kp N7      &kp N6
+                &kp ENTER        &kp N0      &kp N9      &kp N8      &kp N7      &kp N6
+                &kp DEL          &kp N0      &kp N9      &kp N8      &kp N7      &kp N6
+                &trans           &trans      &trans      &kp LBKT    &kp RBKT
             >;
         };
 
@@ -83,15 +89,17 @@
          */
         sym_layer {
             bindings = <
+                /* LEFT */
                 &kp TILDE        &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT
                 &kp TILDE        &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT
                 &kp TILDE        &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT
                                  &trans       &trans       &trans       &trans       &trans
 
-                &kp PIPE         &kp RPAR    &kp STAR    &kp LPAR    &kp AMPS    &kp CARET
-                &kp PIPE         &kp RPAR    &kp STAR    &kp LPAR    &kp AMPS    &kp CARET
-                &kp BSPC         &kp PLUS    &kp STAR    &kp UNDER   &kp AMPS    &kp CARET
-                &kp C_PLAY_PAUSE &kp RBRC    &trans      &kp LBRC    &trans
+                /* RIGHT */
+                &kp BSPC         &kp PLUS    &kp UNDER   &kp STAR    &kp AMPS    &kp CARET
+                &kp PIPE         &kp RPAR    &kp LPAR    &kp STAR    &kp AMPS    &kp CARET
+                &kp PIPE         &kp RPAR    &kp LPAR    &kp STAR    &kp AMPS    &kp CARET
+                &kp C_PLAY_PAUSE &trans      &trans      &kp LBRC    &kp RBRC
             >;
         };
 
@@ -100,6 +108,7 @@
          */
         func_layer {
             bindings = <
+                /* LEFT */
                 &kp GRAVE        &kp F1      &kp F2      &kp F3      &kp F4      &kp F5
                 &trans           &kp F1      &kp F2      &kp F3      &kp F4      &kp F5
                 &trans           &kp F1      &kp F2      &kp F3      &kp F4      &kp F5
@@ -107,13 +116,12 @@
                                                            &kp C_VOL_UP
                                                                        &kp C_MUTE
 
-                &kp F11          &kp F10     &kp F8      &kp F9      &kp F7      &kp F6
-                &kp F11          &kp F10     &kp F8      &kp F9      &kp F7      &kp F6
-                &trans           &kp F10     &kp F8      &kp F9      &kp F7      &kp F6
-                &kp C_PLAY_PAUSE &kp C_VOL_UP
-                                               &kp C_NEXT
-                                                           &kp C_VOL_DN
-                                                                       &kp C_PREV
+                /* RIGHT */
+                &trans           &kp F10     &kp F9      &kp F8      &kp F7      &kp F6
+                &kp F11          &kp F10     &kp F9      &kp F8      &kp F7      &kp F6
+                &kp F11          &kp F10     &kp F9      &kp F8      &kp F7      &kp F6
+                &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT  &kp C_VOL_DN
+                                                                       &kp C_VOL_UP
             >;
         };
     };
